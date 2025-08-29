@@ -22,7 +22,7 @@
 Entradas:
 -4 botones 
 -Potenciometro
-- un sensor de presencia
+-un sensor de presencia
 Salidas:
 -2motores
 -un parlante
