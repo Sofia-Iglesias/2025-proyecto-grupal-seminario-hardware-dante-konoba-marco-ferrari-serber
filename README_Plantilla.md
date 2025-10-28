@@ -39,8 +39,8 @@ Salidas:
 
 ## **`Etapas del proyecto`**
 ### Etapa 1:
-penzar en como hacer todo  
-aprernder a hacer todo    
+pensar en como hacer todo  
+aprender a hacer todo  
 
 ### Etapa 2:
 arrancar a hacer la simulacion
