@@ -1,7 +1,6 @@
 # **`Nombre del Proyecto`**
 
-`Tecnología de los Sistemas de Información - Seminario Avanzado`  
-`Ciclo Lectivo 2025`
+
 
 ## **`Integrante/s`**
 
@@ -40,15 +39,15 @@ Salidas:
 
 ## **`Etapas del proyecto`**
 ### Etapa 1:
-- `Acción 1`
-- `Acción 2`
+penzar en como hacer todo  
+aprernder a hacer todo    
 
 ### Etapa 2:
-- `Acción 1`
-- `Acción 2`
+arrancar a hacer la simulacion
+lograr que funcione todo
 
 ## **`Extras`**
+conseguir los materiales
+conectar todo
+hacer la carcasa y hacer quel proyecto funcione por completo
 
-- `Extra 1`  
-- `Extra 2`  
-- `Extra 3`
