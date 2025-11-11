@@ -5,31 +5,26 @@
 
 ## **`Integrante/s`**
 
-- `Nombre 1`  
-- `Nombre 2`
-
+.Marco Ferrari Serber
+.Dante Konoba
 
 ---
 
 
 ## **`Semana 1`**
+nosotros la semana uno aprendimos a programar con funciones para poder aplicarlo en el proyecto
 
-**`Fecha:`**
 
 **`Actividades Realizadas:`**
-
-- `Actividad 1`  
-- `Actividad 2`
+funciones
 
 **`Dificultades:`**
 
-- `Dificultad 1`  
-- `Dificultad 2`
+no saber nada
 
 **`Próximos Pasos:`**
 
-- `Próximo paso 1`  
-- `Próximo paso 2`
+aprender y mejorar tambien poder incorporar todo para poder continuar
 
 
 ---
@@ -37,19 +32,16 @@
 
 ## **`Semana 2`**
 
-**`Fecha:`**
+empezar con la programacion del proyecto
 
 **`Actividades Realizadas:`**
 
-- `Actividad 1`  
-- `Actividad 2`
+programamos el lcd el potenciometro y los motores
 
 **`Dificultades:`**
 
-- `Dificultad 1`  
-- `Dificultad 2`
+no andaba el lcd
 
 **`Próximos Pasos:`**
 
-- `Próximo paso 1`  
-- `Próximo paso 2`
+encontrar errores y corregir para poder terminar
