@@ -1,6 +1,6 @@
 # **`Nombre del Proyecto`**
 
-
+DISCOMPER
 
 ## **`Integrante/s`**
 
@@ -30,12 +30,7 @@ Salidas:
 -2 LEDS
 
 ## **`Requisitos`**
-
-- `Software necesario`  
-- `Librerías`  
-- `Hardware adicional`
-
-`Completar una vez definido el proyecto.`
+al final utilizamos una libreria que fue la de <LiquidCrystal.h> para poder usar el lcd
 
 ## **`Etapas del proyecto`**
 ### Etapa 1:
