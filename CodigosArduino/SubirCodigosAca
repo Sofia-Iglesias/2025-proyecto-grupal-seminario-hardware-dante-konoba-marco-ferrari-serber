@@ -1,1 +1,180 @@
+#include <LiquidCrystal.h>
+#define PIN_POTENCIOMETRO A0 
+LiquidCrystal led(12,13,2,3,4,5);
+
+int valorAnalogico = 0;
+int horaProgramada = 0;
+int minutoProgramado = 0;
+int ultimoValorAnalogico = -1;
+
+#define LED1 A1
+#define LED2 A2
+#define LED3 A3
+#define HORAS      0
+#define MINUTOS    0
+#define SEGUNDOS   0
+#define PIN_ULTRASONICO 9
+
+int contHoras = HORAS;
+int contMin = MINUTOS;
+int contSeg = SEGUNDOS;
+unsigned long tiempoAnterior = 0;
+int intervalo = 1000;
+bool motorEncendido = false;
+unsigned long tiempoInicioMotor = 0;
+int btn1 = 6;
+int btn2 = 7;
+
+void setup() {
+  pinMode(LED1, OUTPUT);
+  pinMode(LED2, OUTPUT);
+  pinMode(LED3, OUTPUT);
+  pinMode(10, OUTPUT);
+  pinMode(8, OUTPUT);
+  pinMode(6, INPUT_PULLUP);
+  pinMode(7, INPUT_PULLUP);
+  pinMode(11, OUTPUT);
+  
+  led.begin(16, 2);
+  led.clear();
+  Serial.begin(9600); 
+  Serial.println("--- Sistema iniciado ---");
+}
+
+void loop() {
+  contador();
+  int lectura = digitalRead(9);
+  valorAnalogico = analogRead(PIN_POTENCIOMETRO);
+  long duracion, distancia;
+ 
+  if (abs(valorAnalogico - ultimoValorAnalogico) > 5) {
+   
+    digitalWrite(LED1, LOW);
+    digitalWrite(LED2, HIGH);
+
+    
+    ultimoValorAnalogico = valorAnalogico;
+
+    
+    int totalMinutos = map(valorAnalogico, 0, 1023, 0, 1439); 
+    horaProgramada = totalMinutos / 60; 
+    minutoProgramado = totalMinutos % 60; 
+
+    Serial.print("Pot: ");
+    Serial.print(valorAnalogico);
+    Serial.print(" -> Hora: ");
+    if (horaProgramada < 10) Serial.print("0");
+    Serial.print(horaProgramada);
+    Serial.print(":");
+    if (minutoProgramado < 10) Serial.print("0");
+    Serial.println(minutoProgramado);
+  } else {
+    digitalWrite(LED1, HIGH);
+    digitalWrite(LED2, LOW);
+  }
+ 
+  
+  if(digitalRead(btn1) == LOW){
+    digitalWrite(10, HIGH);
+    digitalWrite(8,HIGH);
+    delay(1000);
+    digitalWrite(8, LOW);
+  } else {
+    digitalWrite(10, LOW);
+   digitalWrite(8, LOW);
+  }
+
+  if(digitalRead(btn2) == LOW){
+    digitalWrite(11,HIGH);
+    digitalWrite(8,HIGH);
+    delay(1000);
+    digitalWrite(8, LOW);
+  } else {
+    digitalWrite(11, LOW);
+    digitalWrite(8, LOW);
+  }
+
+  
+  led.setCursor(0, 0);
+  led.print("Prog: ");
+  if (horaProgramada < 10) led.print("0");
+  led.print(horaProgramada);
+  led.print(":");
+  if (minutoProgramado < 10) led.print("0");
+  led.print(minutoProgramado);
+  led.print("   ");
+  
+  
+  pinMode(PIN_ULTRASONICO, OUTPUT);
+  digitalWrite(PIN_ULTRASONICO, LOW);
+  delayMicroseconds(2);
+  digitalWrite(PIN_ULTRASONICO, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(PIN_ULTRASONICO, LOW);
+
+  pinMode(PIN_ULTRASONICO, INPUT);
+  duracion = pulseIn(PIN_ULTRASONICO, HIGH);
+
+  distancia = duracion / 58.2;  // Conversión a cm
+
+  Serial.print("Distancia: ");
+  Serial.print(distancia);
+  Serial.println(" cm");
+
+  
+  if(distancia >= 1 && distancia < 335){
+    digitalWrite(LED3, HIGH);
+  }
+  else{
+  digitalWrite(LED3,LOW);
+  }
+  
+}
+
+void contador() {
+  unsigned long tiempoActual = millis();
+
+  if (tiempoActual - tiempoAnterior >= intervalo) {
+    tiempoAnterior = tiempoActual;  
+    contSeg++;                      
+
+    if (contSeg >= 60) {
+      contSeg = 0;
+      contMin++;
+    }
+    if (contMin >= 60) {
+      contMin = 0;
+      contHoras++;
+    }
+    if (contHoras >= 24) {
+      contHoras = 0;
+    }
+  }
+
+  if (contHoras == horaProgramada && contMin == minutoProgramado && contSeg == 0 && !motorEncendido) {
+    Serial.println("¡Hora programada alcanzada! Motor encendido 5 segundos.");
+    digitalWrite(10, HIGH);
+    digitalWrite(8, HIGH);
+    motorEncendido = true;
+    tiempoInicioMotor = millis();
+  }
+
+  if (motorEncendido && millis() - tiempoInicioMotor >= 5000) {
+    digitalWrite(10, LOW);
+    digitalWrite(8, LOW);
+    motorEncendido = false;
+    Serial.println("Motor apagado.");
+  }
+
+  led.setCursor(0, 1);
+  led.print("Reloj: ");
+  if (contHoras < 10) led.print("0");
+  led.print(contHoras);
+  led.print(":");
+  if (contMin < 10) led.print("0");
+  led.print(contMin);
+  led.print(":");
+  if (contSeg < 10) led.print("0");
+  led.print(contSeg);
+}
 
