@@ -43,4 +43,4 @@ Porgramar la simulación, realizar los tps con sus respectivos diagramas. Armar 
 Añadir los mensajes del lcd
 armarlo en realidad
 link tp:
-https://www.tinkercad.com/things/aXjQSSU8bNW-smashing-esboo-hango/editel?returnTo=https%3A%2F%2Fwww.tinkercad.com%2Fdashboard&sharecode=t23heQ7rh8ya_DWeT5btGbzjKF8ba3OGSsjs6O9HhOg
+https://www.tinkercad.com/things/aXjQSSU8bNW-tp-hard/editel?returnTo=https%3A%2F%2Fwww.tinkercad.com%2Fdashboard&sharecode=t23heQ7rh8ya_DWeT5btGbzjKF8ba3OGSsjs6O9HhOg
